@@ -1,5 +1,6 @@
 import 'package:ecommerce_new_task/controller/my_controller.dart';
-import 'package:ecommerce_new_task/view/home_screen.dart';
+import 'package:ecommerce_new_task/view/home_screen/home_screen.dart';
+import 'package:ecommerce_new_task/view/navigation_bar/navigation_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: HomeScreen(),
+        home: NavigationScreen(),
       ),
     );
   }

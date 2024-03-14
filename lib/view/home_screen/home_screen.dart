@@ -4,8 +4,12 @@ import 'package:ecommerce_new_task/utils/color_constant/color_constant.dart';
 import 'package:ecommerce_new_task/view/cart_screen/cart_screen.dart';
 import 'package:ecommerce_new_task/view/favourite_screen/favourite_screen.dart';
 import 'package:ecommerce_new_task/view/home_screen/homescreen_widget.dart';
+import 'package:ecommerce_new_task/view/product_screen/product_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
+
+import '../../model/item_model.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
@@ -15,10 +19,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // var box = Hive.box<itemModel>("New");
+  // List cartItemKeys = [];
+
   SampleApi sampleApiobj = SampleApi();
   @override
   void initState() {
-    // TODO: implement initState
+    // cartItemKeys = box.keys.toList();
     fetchdata();
     super.initState();
   }
@@ -50,11 +57,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   size: 30,
                 )),
             IconButton(
+                ///////////GOES TO cart
                 onPressed: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MyCart(),
+                        builder: (context) => MyCart(
+                          image: "",
+                          price: "".toString(),
+                          title: "",
+                        ),
                       ));
                 },
                 icon: Icon(
@@ -81,6 +93,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisSpacing: 5,
               ),
               itemBuilder: (context, index) => HomeScreenWidget(
+                    //CART TITLE IS FOR THE CARTPAGE
+                    Carttitle:
+                        MyControllerobj.sampleApiobj.products?[index].title ??
+                            "",
+                    Cartprice: MyControllerobj
+                            .sampleApiobj.products?[index].price
+                            .toString() ??
+                        "",
+                    Cartimage: MyControllerobj
+                            .sampleApiobj.products?[index].thumbnail ??
+                        "",
                     productName:
                         MyControllerobj.sampleApiobj.products?[index].title ??
                             "",
@@ -93,6 +116,34 @@ class _HomeScreenState extends State<HomeScreen> {
                     price: MyControllerobj.sampleApiobj.products?[index].price
                             .toString() ??
                         "",
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProductScreen(
+                              rating: MyControllerobj
+                                      .sampleApiobj.products?[index].rating
+                                      .toString() ??
+                                  "",
+                              title: MyControllerobj
+                                      .sampleApiobj.products?[index].title ??
+                                  "",
+                              price: MyControllerobj
+                                      .sampleApiobj.products?[index].price
+                                      .toString() ??
+                                  "",
+                              brand: MyControllerobj
+                                      .sampleApiobj.products?[index].brand ??
+                                  "",
+                              description: MyControllerobj.sampleApiobj
+                                      .products?[index].description ??
+                                  "",
+                              image: MyControllerobj.sampleApiobj
+                                      .products?[index].thumbnail ??
+                                  "",
+                            ),
+                          ));
+                    },
                   )),
         ),
       ),

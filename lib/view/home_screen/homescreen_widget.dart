@@ -30,7 +30,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
               height: 160,
               width: 180,
               decoration: BoxDecoration(
-                  color: Colors.amber,
+                  color: ColorConstant.blue,
                   image: DecorationImage(
                       image: NetworkImage(widget.image), fit: BoxFit.cover)),
               child: Row(

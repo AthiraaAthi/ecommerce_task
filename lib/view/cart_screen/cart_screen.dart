@@ -1,8 +1,9 @@
-import 'package:ecommerce_new_task/utils/color_constant/color_constant.dart';
 import 'package:flutter/material.dart';
 
-class FavouriteScreen extends StatelessWidget {
-  const FavouriteScreen({super.key});
+import '../../utils/color_constant/color_constant.dart';
+
+class MyCart extends StatelessWidget {
+  const MyCart({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class FavouriteScreen extends StatelessWidget {
             )),
         backgroundColor: ColorConstant.white,
         title: Text(
-          "Favourites",
+          "MyCart",
           style:
               TextStyle(color: ColorConstant.blue, fontWeight: FontWeight.w800),
         ),

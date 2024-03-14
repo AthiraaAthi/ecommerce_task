@@ -72,7 +72,7 @@ class ProductScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    price,
+                    "\$" + price,
                     style: TextStyle(fontSize: 20, color: ColorConstant.blue),
                   ),
                   Row(
